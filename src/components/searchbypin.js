@@ -45,7 +45,7 @@ function Searchbypin(props) {
     
             <br/>
                 
-          {pin.length===6?pindata.map(pindatas =>{
+          {pin.length===6?pindata.length!==0?pindata.map(pindatas =>{
                return (
                    
                <div key={pindatas.center_id}><b style={{}}>{pindatas.name }<t/>{pindatas.fee_type==="Free"? 
@@ -60,7 +60,7 @@ function Searchbypin(props) {
                   
                 })}
                <br/>  <br/></div>)}
-           ):null}
+           ):"NO Slots are available ":null}
           
          
             
