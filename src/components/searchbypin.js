@@ -39,7 +39,7 @@ function Searchbypin(props) {
         
         <div>
                
-            <input type='text' value={pin} onChange={e=>setPin(e.target.value)}></input>
+            <input type='text' value={pin} onChange={e=>setPin(e.target.value)} placeholder="Enter Your PIN here"></input>
         <br/>
         {pin.length===6? <h3 style={{color:"grey"}}> Below are details of available slots at {pin} within 7 days</h3>:null}
     
@@ -53,8 +53,9 @@ function Searchbypin(props) {
                
                 {pindatas.sessions.map(pinsession=>{
                     return(
-                     <div key={pinsession.session_id}> <b>{ pinsession.date}</b> {" "+pinsession.vaccine+" available doses "}{pinsession.available_capacity===0?<b style={{background:"lightyellow",color:"red",borderRadius:"10%",border:"10%"}}>
-                          Booked</b>:<b style={{background:"lightyellow",color:"green",borderRadius:"10%",border:"10%"}}>{pinsession.available_capacity}</b>}<b>{"   age-limit: "}</b><b style={{color:"brown"}}>{pinsession.min_age_limit}</b>{" (dose1= "+pinsession.available_capacity_dose1+" dose2= "+pinsession.available_capacity_dose2+")"} <br/> </div>
+                     <div key={pinsession.session_id}> <b>{ pinsession.date}</b> {" "+pinsession.vaccine+" Available Doses "}{pinsession.available_capacity===0?<b style={{background:"lightyellow",color:"red",borderRadius:"10%",border:"10%"}}>
+                          Booked</b>:<b style={{background:"lightyellow",color:"green",borderRadius:"10%",border:"10%"}}>{pinsession.available_capacity}</b>}
+                          <b>{"   age-limit: "}</b><b style={{color:"brown"}}>{pinsession.min_age_limit}</b>{" (dose1= "+pinsession.available_capacity_dose1+" dose2= "+pinsession.available_capacity_dose2+")"} <br/> </div>
                     )
                   
                 })}

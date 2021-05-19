@@ -9,3 +9,6 @@ td{
   position: relative;
   
 }
+.col-1:hover{
+  cursor: pointer;
+}
