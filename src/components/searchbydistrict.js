@@ -8,6 +8,7 @@ function Searchbydistrict(props) {
   const [statename, setStatename] = useState(null);
   const [districts, setDistricts] = useState([]);
   const [districtinfo,setDistrictinfo]=useState(null)
+  const [districtnme,setDistrictnme]=useState(null)
   useEffect(async () => {
     axios
       .get(`https://cdn-api.co-vin.in/api/v2/admin/location/states`)
@@ -21,7 +22,7 @@ function Searchbydistrict(props) {
 
    var id=null;
    var districtid=null;
-   var districtnme="";
+   
    const  fetchdistrict = (statename) => {
     
       indiastates.map((state) => {
@@ -41,7 +42,8 @@ function Searchbydistrict(props) {
   }
 
   const districtdetail=(districtname)=>{
-    districtnme=districtname;
+    setDistrictnme(districtname)
+    console.log(districtnme)
     districts.map((district)=>{
       if(district.district_name===districtname)
       {districtid=district.district_id}
@@ -78,11 +80,11 @@ function Searchbydistrict(props) {
       />
       
      
-      {districtinfo? <h3 style={{color:"grey"}}> Below are details of available slots at {districtinfo[0].district_name} within 7 days</h3>:null}
+      {districtnme? <h3 style={{color:"grey"}}> Below are details of available slots at {districtnme} within 7 days</h3>:null}
     
     <br/>
         
-  {districtinfo?districtinfo.map(pindatas =>{
+  {districtnme?districtinfo.length!==0?districtinfo.map(pindatas =>{
        return (
            
        <div key={pindatas.center_id}><b style={{}}>{pindatas.name }<t/>{pindatas.fee_type==="Free"? 
@@ -97,7 +99,7 @@ function Searchbydistrict(props) {
           
         })}
        <br/>  <br/></div>)}
-   ):null}
+   ):"NO Slots are available ":null}
   
     </div>
   );
