@@ -15,7 +15,7 @@ const App = ()=> {
     const[date,setDate]=useState(null)
     const[registerr,setRegisterr]=useState(null)
     const [token,setToken,removetoken]=useCookies(['mytoken'])
-    var k=true
+    
    const logout=()=>
    {
       console.log("dkjs")
