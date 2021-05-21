@@ -7,7 +7,7 @@ function Searchbydistrict(props) {
   //const [id, setId] = useState(null);
   const [statename, setStatename] = useState(null);
   const [districts, setDistricts] = useState([]);
-  const [districtinfo,setDistrictinfo]=useState(null)
+  const [districtinfo,setDistrictinfo]=useState([])
   const [districtnme,setDistrictnme]=useState(null)
   useEffect(async () => {
     axios
@@ -59,6 +59,8 @@ function Searchbydistrict(props) {
 
   return (
     <div>
+      <br/>
+      
       <Dropdown
         options={ indiastates.map((state) => {
           
@@ -84,7 +86,7 @@ function Searchbydistrict(props) {
     
     <br/>
         
-  {districtnme?districtinfo.length!==0?districtinfo.map(pindatas =>{
+  {districtnme? districtinfo.length!==0?districtinfo.map(pindatas =>{
        return (
            
        <div key={pindatas.center_id}><b style={{}}>{pindatas.name }<t/>{pindatas.fee_type==="Free"? 

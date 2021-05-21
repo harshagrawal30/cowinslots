@@ -38,8 +38,8 @@ function Searchbypin(props) {
         
         
         <div>
-               
-            <input type='text' value={pin} onChange={e=>setPin(e.target.value)} placeholder="Enter Your PIN here"></input>
+               <br/>
+            <input className="input-group" type='text' value={pin} onChange={e=>setPin(e.target.value)} style={{width:"30%",marginLeft:"25%"}} placeholder="Enter Your PIN here"></input>
         <br/>
         {pin.length===6? <h3 style={{color:"grey"}}> Below are details of available slots at {pin} within 7 days</h3>:null}
     
