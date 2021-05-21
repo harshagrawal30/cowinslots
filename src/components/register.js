@@ -21,7 +21,7 @@ function Register(props) {
         console.log(sha)
      APIservice.VerifyUser({"otp":sha,"txnId":txnId})
      .then(resp=>setToken('mytoken',resp.token))
-     .catch(error=>console.log(error))
+     
     }
    
     
@@ -33,10 +33,10 @@ function Register(props) {
           {sha}
           {token?`You are successfully logged in here. We are sorry as no functionality is allowed forward to it.Go check out slots availability using pin or district wise.THANK YOU`:null}
             <br/>
-        {token?null:txnId.length===0? <h5>Enter your mobile number to recieve OTP</h5>:null}
-        {token?null:txnId.length===0?    <input type='text' value={mobile} onChange={e=>setMobile(e.target.value)} placeholder="Enter Your mobile no here"></input>:
+        {txnId.length===0? <h5>Enter your mobile number to recieve OTP</h5>:null}
+        {txnId.length===0?    <input type='text' value={mobile} onChange={e=>setMobile(e.target.value)} placeholder="Enter Your mobile no here"></input>:
           <input type='text' value={otp} onChange={e=>setOtp(e.target.value)} placeholder="Enter Your otp here"></input>}
-            {token?null: txnId.length===0? mobile.length===10? <button type="submit" onClick={()=>recieveotp()}>Get OTP</button>:null
+            { txnId.length===0? mobile.length===10? <button type="submit" onClick={()=>recieveotp()}>Get OTP</button>:null
             : <button type="submit" onClick={()=>submitotp()}>Submit OTP</button>}
          <br/>   {eror}
         </div>
