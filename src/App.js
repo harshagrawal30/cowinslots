@@ -18,7 +18,8 @@ const App = ()=> {
     
    const logout=()=>
    {
-      console.log("dkjs")
+ 
+   
      removetoken(['mytoken'])
    }
     useEffect(()=>{
@@ -37,8 +38,8 @@ const App = ()=> {
        <br/>
        <div className="container">
          <div className="container">
-        <div className="col"> <button onClick={()=>setRegisterr(1)} className="btn btn-success" style={{float:"right"}}>  Register/Login </button></div>
-          
+       {token.mytoken?null: <div className="col"> <button onClick={()=>setRegisterr(1)} className="btn btn-success" style={{float:"right"}}>  Register/Login </button></div>}
+    {token.mytoken ?  < div className="col"> <button onClick={()=>logout()} className="btn btn-danger" style={{float:"right"}}> Logout </button></div>:null}
       <br/> <h3  className="col" style={{color:"darkred"}}>Get Slot details using</h3>
          <div className="row">
 
@@ -46,7 +47,7 @@ const App = ()=> {
        <div className="col " style={{marginLeft:"-40%"}}><button onClick={()=>(setMethod("pin"),setRegisterr(null))}       className="btn btn-info"  style={{}}>Pin</button></div>
         
           </div>
-       
+      
           </div>
        </div>
   

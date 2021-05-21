@@ -13,8 +13,8 @@ function Searchbydistrict(props) {
     axios
       .get(`https://cdn-api.co-vin.in/api/v2/admin/location/states`)
       .then((resp) => {
-        console.log(resp.data);
-        console.log(resp.data.states);
+       // console.log(resp.data);
+       // console.log(resp.data.states);
         setArticle(resp.data.states);
       })
       .catch((error) => console.log(error));
@@ -30,20 +30,20 @@ function Searchbydistrict(props) {
            id=state.state_id;
         }
       });
-      console.log(id+statename);
+     // console.log(id+statename);
        axios
       .get(`https://cdn-api.co-vin.in/api/v2/admin/location/districts/${id}`)
       .then((resp) => {
-        console.log(resp.data);
-        console.log(id+"djgldkjg");
+       // console.log(resp.data);
+        //console.log(id+"djgldkjg");
         setDistricts(resp.data.districts);
       })
-      .catch((error) => console.log(error));
+      //.catch((error) => console.log(error));
   }
 
   const districtdetail=(districtname)=>{
     setDistrictnme(districtname)
-    console.log(districtnme)
+   // console.log(districtnme)
     districts.map((district)=>{
       if(district.district_name===districtname)
       {districtid=district.district_id}
@@ -52,7 +52,7 @@ function Searchbydistrict(props) {
     })
     axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${districtid}&date=${props.date}`)
       .then((resp)=>{
-        console.log(resp.data);
+        //console.log(resp.data);
         setDistrictinfo(resp.data.centers)
       })
   }

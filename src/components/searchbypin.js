@@ -13,11 +13,11 @@ function Searchbypin(props) {
       if(pin.length===6)
        { axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}`)
         .then(resp=>{
-            console.log(resp.data)
+         //   console.log(resp.data)
             
             setPindata(resp.data.centers)
           })
-         .catch(error=> console.log(error))
+       // .catch(error=> console.log(error))
      } },[pin] )
          
     
