@@ -15,11 +15,12 @@ const App = ()=> {
     const[date,setDate]=useState(null)
     const[registerr,setRegisterr]=useState(null)
     const [token,setToken,removetoken]=useCookies(['mytoken'])
-    
+    const [eror2,setError2]=useState(null)
+    const [eror,setError]=useState([])
    const logout=()=>
    {
  
-   
+    setError2(null)
      removetoken(['mytoken'])
    }
     useEffect(()=>{
@@ -54,7 +55,7 @@ const App = ()=> {
       
       
           
-          {registerr?<Register registerr={registerr}/>:null}
+          {registerr?<Register registerr={registerr} eror={eror} eror2={eror2}/>:null}
        { registerr?null:method==="pin"? <Searchbypin date={date}/>:null}
        {registerr?null:method==="district"? <Searchbydistrict date={date}/>:null}
        </div>
