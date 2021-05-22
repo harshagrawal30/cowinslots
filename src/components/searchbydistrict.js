@@ -5,12 +5,12 @@ import axios from "axios";
 function Searchbydistrict(props) {
   const [indiastates, setArticle] = useState([]);
   //const [id, setId] = useState(null);
-  const [statename, setStatename] = useState(null);
+ // const [statename, setStatename] = useState(null);
   const [districts, setDistricts] = useState([]);
   const [districtinfo,setDistrictinfo]=useState([])
   const [districtnme,setDistrictnme]=useState(null)
   useEffect(async () => {
-    axios
+    await axios
       .get(`https://cdn-api.co-vin.in/api/v2/admin/location/states`)
       .then((resp) => {
        // console.log(resp.data);
@@ -23,7 +23,7 @@ function Searchbydistrict(props) {
    var id=null;
    var districtid=null;
    
-   const  fetchdistrict = (statename) => {
+   const  fetchdistrict =async (statename) => {
     
       indiastates.map((state) => {
         if (state.state_name === statename) {
@@ -31,7 +31,7 @@ function Searchbydistrict(props) {
         }
       });
      // console.log(id+statename);
-       axios
+      await axios
       .get(`https://cdn-api.co-vin.in/api/v2/admin/location/districts/${id}`)
       .then((resp) => {
        // console.log(resp.data);
@@ -41,7 +41,7 @@ function Searchbydistrict(props) {
       //.catch((error) => console.log(error));
   }
 
-  const districtdetail=(districtname)=>{
+  const districtdetail=async(districtname)=>{
     setDistrictnme(districtname)
    // console.log(districtnme)
     districts.map((district)=>{
@@ -50,7 +50,7 @@ function Searchbydistrict(props) {
       
       
     })
-    axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${districtid}&date=${props.date}`)
+    await axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${districtid}&date=${props.date}`)
       .then((resp)=>{
         //console.log(resp.data);
         setDistrictinfo(resp.data.centers)
@@ -82,14 +82,14 @@ function Searchbydistrict(props) {
       />
       
      
-      {districtnme? <h3 style={{color:"grey"}}> Below are details of available slots at {districtnme} within 7 days</h3>:null}
+      { districtnme? <h3 style={{color:"grey"}}> Below are details of available slots at {districtnme} within 7 days</h3>:null}
     
     <br/>
         
   {districtnme? districtinfo.length!==0?districtinfo.map(pindatas =>{
        return (
            
-       <div key={pindatas.center_id}><b style={{}}>{pindatas.name }<t/>{pindatas.fee_type==="Free"? 
+       <div key={pindatas.center_id}><b style={{}}>{pindatas.name }{pindatas.fee_type==="Free"? 
        <b style={{color:"blue"}}>{pindatas.fee_type}</b>:<b style={{color:"red"}}>{pindatas.fee_type}</b>}</b>
        
         {pindatas.sessions.map(pinsession=>{

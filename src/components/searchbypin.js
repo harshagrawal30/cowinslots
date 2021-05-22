@@ -1,7 +1,7 @@
 
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-import {Table} from 'react-bootstrap'
+
 function Searchbypin(props) {
 
     const[pin,setPin]=useState('')
@@ -37,7 +37,7 @@ function Searchbypin(props) {
     return (
         
         
-        <div>
+        <div >
                <br/>
             <input className="input-group" type='text' value={pin} onChange={e=>setPin(e.target.value)} style={{width:"30%",marginLeft:"25%"}} placeholder="Enter Your PIN here"></input>
         <br/>
@@ -48,7 +48,7 @@ function Searchbypin(props) {
           {pin.length===6?pindata.length!==0?pindata.map(pindatas =>{
                return (
                    
-               <div key={pindatas.center_id}><b style={{}}>{pindatas.name }<t/>{pindatas.fee_type==="Free"? 
+               <div key={pindatas.center_id}><b style={{}}>{pindatas.name }{pindatas.fee_type==="Free"? 
                <b style={{color:"blue"}}>{pindatas.fee_type}</b>:<b style={{color:"red"}}>{pindatas.fee_type}</b>}</b>
                
                 {pindatas.sessions.map(pinsession=>{
