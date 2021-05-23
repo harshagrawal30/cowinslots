@@ -26,11 +26,10 @@ function Register(props) {
      
     }
    
-    
     return (
         <div>
             
-            
+        
         
           {token.mytoken?`You are successfully logged in. We are sorry as no functionality is allowed forward to it.Go check out slots availability using pin or district wise.THANK YOU!`:eror2}
             <br/>
