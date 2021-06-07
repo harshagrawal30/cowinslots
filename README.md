@@ -1,8 +1,9 @@
 # Getting Started with Create React App
-#e
+
 It is cowin slot finder project. 
 Go check it out below:
  https://cowinslots-jet.vercel.app/
+DO LEAVE A STAR IF YOU LIKED IT.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
